@@ -4,7 +4,7 @@ import React, { useState } from 'react'
 import { CiSearch } from "react-icons/ci";
 import { FiUser } from "react-icons/fi";
 import { IoCartOutline } from "react-icons/io5";
-const Navbar = () => {
+const Navbar = ({setSearchTerm}:any) => {
     const[modalOpen,setModalOpen] = useState(false);
 
     const handleClikModal = () =>{
@@ -14,10 +14,13 @@ const Navbar = () => {
             setModalOpen(false);
         }
     }
+    const seachTermInput = (searchTerm:string) =>{
+        setSearchTerm(searchTerm)
+       }
     return (
         <nav className='bg-265073 w-full flex justify-between items-center fixed top-0'>
             <div className='relative w-40'>
-                <input type="text"  placeholder='Search' className='w-full px-7 py-2 rounded-xl m-2 text-start' />
+                <input type="text"  placeholder='Search' className='w-full px-7 py-2 rounded-xl m-2 text-start' onChange={(e)=>seachTermInput(e.target.value)} />
                 <div className='absolute flex items-center top-4 left-3 text-gray-400'>
                     <button>
                     <CiSearch className='text-2xl' />

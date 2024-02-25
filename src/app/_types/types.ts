@@ -7,6 +7,7 @@ export interface Products{
         id:number,
         name:string
     }
+    base64Image:string
 }
 export interface Categories{
     id:number,

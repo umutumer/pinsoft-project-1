@@ -5,7 +5,7 @@ import React from 'react'
 
 const getProducts = async (id: number) => {
     try {
-        const response = await fetch(`http://localhost:8080/api/products/${id}`);
+        const response = await fetch(`https://pinsoft-project.onrender.com/api/products/${id}`);
         if (!response.ok) {
             throw new Error('Bir şeyler yanlış gitti');
         }
@@ -25,7 +25,7 @@ const page = async ({ params }: { params: { id: number } }) => {
         <main className="bg-9eb8d9 min-h-screen flex items-center justify-center">
             <Navbar />
             <div className='w-[50rem] h-[30rem] bg-white flex flex-col items-center relative rounded-3xl'>
-                <img src="https://images.migrosone.com/sanalmarket/product/37455083/37455083-8f6bf9-1650x1650.JPG" alt="" className='w-48 h-60 border-b border-gray-300 ' />
+                <img src={product.base64Image} alt="" className='w-48 h-60 border-b border-gray-300 mt-2' />
                 <p>{product.name}</p>
                 <p>{product.explanation}</p>
                 <p>{product.price}₺</p>

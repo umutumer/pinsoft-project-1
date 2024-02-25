@@ -23,7 +23,7 @@ const page = () => {
     
     const getCategories = async () =>{
       try {
-        const response = await fetch("http://localhost:8080/api/categories");
+        const response = await fetch("https://pinsoft-project.onrender.com/api/categories");
         if (!response.ok) {
           throw new Error('Bir şeyler yanlış gitti');
         }
@@ -35,7 +35,7 @@ const page = () => {
     }
     const getProducts = async () => {
       try {
-        const response = await fetch("http://localhost:8080/api/products");
+        const response = await fetch("https://pinsoft-project.onrender.com/api/products");
         if (!response.ok) {
           throw new Error('Bir şeyler yanlış gitti');
         }

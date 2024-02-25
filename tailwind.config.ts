@@ -12,8 +12,9 @@ const config: Config = {
         '265073': '#265073',
         '9eb8d9': "#9eb8d9",
       },
+      primary:'#265073',
     },
   },
-  plugins: [],
+  plugins: [require("daisyui")],
 };
 export default config;

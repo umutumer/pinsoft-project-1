@@ -12,10 +12,10 @@ const Product = ({filteredProductList}:Product) => {
   return (
     <div className=' mt-16 flex flex-wrap'>
       {filteredProductList.map((product) =>(
-        <div key={product.id} className='bg-white p-2 flex flex-col items-center m-5 rounded-xl w-48 h-72 ' >
-         <Link href={`/products/${product.id}`}> <img src="https://images.migrosone.com/sanalmarket/product/37455083/37455083-8f6bf9-1650x1650.JPG" alt="" className='w-full max-h-52 border-b border-gray-300' /></Link>
+        <div key={product.id} className='bg-white p-2 flex flex-col items-center m-5 rounded-xl w-48 h-80 ' >
+         <Link className='w-full h-52' href={`/products/${product.id}`}> <img src={product.base64Image} alt="productImg" className='w-full max-h-52 border-b border-gray-300' /></Link>
           <p>{product.name}</p>
-          <p>{product.price}</p>
+          <p>{product.price}₺</p>
           <button className='bg-265073 my-1 px-2 py-1 text-white rounded-xl'>Sepete Ekle</button>
         </div>
       ))}
