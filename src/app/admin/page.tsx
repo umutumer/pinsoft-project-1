@@ -5,6 +5,8 @@ import { MdDelete, MdEdit } from "react-icons/md";
 import Link from 'next/link';
 import { Categories, Products } from '../_types/types';
 import { MdOutlineCancel } from "react-icons/md";
+import 'react-toastify/dist/ReactToastify.css';
+import { Bounce, ToastContainer, toast } from 'react-toastify';
 const page = () => {
     const [deleteModalOpen, setDeleteModalOpen] = useState(false);
     const [upDelModal, setUpDelModal] = useState(false);
@@ -54,6 +56,18 @@ const page = () => {
             }
         } catch (error) {
             console.error('Ürün silinirken bir hata oluştu:', error);
+        }finally{
+            toast.success('Ürün Başarıyla Silindi!', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                transition: Bounce,
+                });
         }
     };
     const [categories, setCategories] = useState<Categories[]>([]);
@@ -126,6 +140,17 @@ const page = () => {
         } finally {
             setUpDelModal(false);
             getProducts();
+            toast.success('Ürün Başarıyla Eklendi/Güncellendi!', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                transition: Bounce,
+                });
         }
     };
     
@@ -180,6 +205,7 @@ const page = () => {
     }, []);
     return (
         <div className='w-full min-h-screen flex flex-col items-center justify-center bg-9eb8d9 relative'>
+            <ToastContainer />
             <AdminNavbar />
             <div className='w-[90%] mt-28  bg-white flex flex-col items-center relative'>
                 <h3 className='w-full text-center my-10 text-2xl text-blue-900'>Products</h3>

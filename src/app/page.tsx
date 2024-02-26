@@ -4,11 +4,12 @@ import Navbar from "./_components/Navbar";
 import Product from "./_components/Product";
 import SideBar from "./_components/SideBar";
 import { Categories, Products } from "./_types/types";
+import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Home() {
   const [products,setProducts] = useState<Products[]>([])
   const [searchTerm,setSearchTerm] = useState<string>("");
-  const [cart,setCart] =useState([]);
   console.log(searchTerm);
   
   const [categories,setCategories] = useState<Categories[]>([])
@@ -57,7 +58,6 @@ export default function Home() {
       console.error('Ürünleri getirirken hata oluştu:', error);
     }
   };
-  
   useEffect(() => {
     getProducts();
     getCategories();
@@ -67,6 +67,7 @@ export default function Home() {
   return (
     
     <main className="bg-9eb8d9 min-h-screen">
+      <ToastContainer />
       <Navbar setSearchTerm={setSearchTerm} />
       <div className="flex">
         <SideBar categories={categories} handleChangeCategory={handleChangeCategory} selectedCategory={selectedCategory} />
