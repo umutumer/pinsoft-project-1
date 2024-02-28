@@ -11,7 +11,7 @@ const Product = ({filteredProductList}:Product,) => {
   console.log(filteredProductList);
   const [cart,setCart] = useState<string[]>([])
   
-  const handleAddToCart = ( pname: string, pprice: number) => {
+  const handleAddToCart = ( pname: string, pprice: number, pbase64Image:string) => {
     const quantity = 1;
     const existingCartItem = cart.find((item) => item.name === pname);
 
@@ -25,7 +25,7 @@ const Product = ({filteredProductList}:Product,) => {
         setCart(updatedCart);
         localStorage.setItem('cart', JSON.stringify(updatedCart));
       } else {
-        const updatedCart = [...cart, { userId: 1, name: pname, price: pprice, quantity: quantity }];
+        const updatedCart = [...cart, { userId: 1, name: pname, price: pprice, quantity: quantity ,base64Image:pbase64Image }];
         setCart(updatedCart);
         localStorage.setItem('cart', JSON.stringify(updatedCart));
       }
@@ -59,7 +59,7 @@ const Product = ({filteredProductList}:Product,) => {
          <Link className='w-full h-52' href={`/products/${product.id}`}> <img src={product.base64Image} alt="productImg" className='w-full h-52 object-cover border-b border-gray-300' /></Link>
           <p>{product.name}</p>
           <p>{product.price}₺</p>
-          <button className='bg-265073 my-1 px-2 py-1 text-white rounded-xl' onClick={() => handleAddToCart(product.name,product.price)}>Sepete Ekle</button>
+          <button className='bg-265073 my-1 px-2 py-1 text-white rounded-xl' onClick={() => handleAddToCart(product.name,product.price,product.base64Image)}>Sepete Ekle</button>
         </div>
       ))}
     </div>

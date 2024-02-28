@@ -239,7 +239,7 @@ const page = () => {
                 </table>
             </div>
             {deleteModalOpen && (
-                <div className='absolute w-full min-h-screen h-full top-0 z-40 bg-black bg-opacity-60 flex items-center justify-center'>
+                <div className='fixed w-full h-screen  top-0 z-40 bg-black bg-opacity-60 flex items-center justify-center'>
                     <div className='relative bg-white w-[30rem] h-72 rounded-2xl'>
                         <p className='ml-5 mt-10'>Are you sure you want to delete this product ?</p>
                         <div className='w-[90%] flex items-center justify-end absolute bottom-10 right-5'>
@@ -250,7 +250,7 @@ const page = () => {
                 </div>
             )}
             {upDelModal && (
-                <div className='absolute w-full min-h-screen h-full top-0 z-40 bg-black bg-opacity-60 flex items-center justify-center'>
+                <div className='fixed w-full h-screen  top-0 z-40 bg-black bg-opacity-60 flex items-center justify-center'>
                     <form className='w-[50rem] h-[40rem] bg-white rounded-3xl flex flex-col items-center relative' onSubmit={handleForSubmit}>
                         <button className='absolute top-2 right-2 text-4xl text-blue-900' onClick={() => setUpDelModal(false)}><MdOutlineCancel /></button>
                         {productId === 0 ?(
