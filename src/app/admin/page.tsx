@@ -2,12 +2,12 @@
 import React, { useEffect, useState } from 'react'
 import AdminNavbar from '../_components/AdminNavbar'
 import { MdDelete, MdEdit } from "react-icons/md";
-import Link from 'next/link';
 import { Categories, Products } from '../_types/types';
 import { MdOutlineCancel } from "react-icons/md";
 import 'react-toastify/dist/ReactToastify.css';
 import { Bounce, ToastContainer, toast } from 'react-toastify';
-const page = () => {
+import Image from 'next/image';
+const Page: React.FC = () => {
     const [deleteModalOpen, setDeleteModalOpen] = useState(false);
     const [upDelModal, setUpDelModal] = useState(false);
     const [products, setProducts] = useState<Products[]>([]);
@@ -227,7 +227,7 @@ const page = () => {
                     <tbody>
                         {products.map((product) => (
                             <tr key={product.id} className='text-center'>
-                                <td className='border border-gray-400 flex justify-center p-2'><img src={product.base64Image} alt={product.name} className='w-20' /></td>
+                                <td className='border border-gray-400 flex justify-center p-2'><Image src={product.base64Image} alt={product.name} className='w-20' /></td>
                                 <td className='border border-gray-400'>{product.name}</td>
                                 <td className='border border-gray-400'>{product.explanation}</td>
                                 <td className='border border-gray-400'>{product.price}₺</td>
@@ -315,4 +315,4 @@ const page = () => {
     )
 }
 
-export default page
+export default Page;

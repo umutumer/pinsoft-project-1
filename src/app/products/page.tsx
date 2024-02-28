@@ -5,7 +5,7 @@ import Product from '../_components/Product'
 import Navbar from '../_components/Navbar'
 import { Categories, Products } from '../_types/types'
 
-const page = () => {
+const Page: React.FC = () => {
     const [products,setProducts] = useState<Products[]>([])
     const [categories,setCategories] = useState<Categories[]>([])
     console.log(products);
@@ -63,4 +63,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page

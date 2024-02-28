@@ -1,4 +1,3 @@
-'use client'
 import React from 'react'
 import RegisterForm from '../_components/RegisterForm'
 import Navbar from '../_components/Navbar'

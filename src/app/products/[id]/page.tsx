@@ -1,6 +1,7 @@
 'use client'
 import Navbar from '@/app/_components/Navbar';
 import { Products } from '@/app/_types/types';
+import Image from 'next/image';
 import React from 'react'
 
 const getProducts = async (id: number) => {
@@ -25,7 +26,7 @@ const page = async ({ params }: { params: { id: number } }) => {
         <main className="bg-9eb8d9 min-h-screen flex items-center justify-center">
             <Navbar />
             <div className='w-[50rem] h-[30rem] bg-white flex flex-col items-center relative rounded-3xl'>
-                <img src={product.base64Image} alt="" className='w-48 h-60 border-b border-gray-300 mt-2' />
+                <Image src={product.base64Image} alt="" className='w-48 h-60 border-b border-gray-300 mt-2' />
                 <p>{product.name}</p>
                 <p>{product.explanation}</p>
                 <p>{product.price}₺</p>

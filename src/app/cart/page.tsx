@@ -5,14 +5,15 @@ import { MdDelete } from "react-icons/md";
 import { CiCircleMinus, CiCirclePlus } from "react-icons/ci";
 import 'react-toastify/dist/ReactToastify.css';
 import { Bounce, ToastContainer, toast } from 'react-toastify';
-const page = () => {
-  const [cart, setCart] = useState<string[]>([])
+import Image from 'next/image';
+const Page: React.FC = () => {
+  const [cart, setCart] = useState<any>([])
 
   const handleQuantityPlus = (cname: string, cprice: number) => {
-    const existingCartItem = cart.find((item) => item.name === cname);
+    const existingCartItem:any = cart.find((item:any) => item.name === cname);
 
     if (existingCartItem) {
-      const updatedCart = cart.map((item) =>
+      const updatedCart :any = cart.map((item:any) =>
         item.name === existingCartItem.name
           ? { ...item, quantity: item.quantity + 1, totalprice: item.quantity * cprice + cprice }
           : item
@@ -22,10 +23,10 @@ const page = () => {
     }
   }
   const handleQuantityMinus = (cname: string) => {
-    const existingCartItem = cart.find((item) => item.name === cname);
+    const existingCartItem : any = cart.find((item:any) => item.name === cname);
 
     if (existingCartItem) {
-      const updatedCart = cart.map((item) =>
+      const updatedCart: any = cart.map((item:any) =>
         item.name === existingCartItem.name
           ? { ...item, quantity: item.quantity - 1, totalprice: item.price - item.price }
           : item
@@ -35,7 +36,7 @@ const page = () => {
     }
   };
   const deleteFromCart = (cname: string) => {
-    const existingCartItem = cart.filter((item) => item.name !== cname);
+    const existingCartItem:any = cart.filter((item:any) => item.name !== cname);
     toast.success('🛒Sepetten başarıyla Silindi!', {
       position: "top-right",
       autoClose: 5000,
@@ -118,9 +119,9 @@ const page = () => {
               </tr>
             </thead>
             <tbody>
-              {cart.map((item, index) => (
+              {cart.map((item:any, index:any) => (
                 <tr key={index} className='text-center'>
-                  <td className='border border-gray-400 w-24 p-2'><img src={item.base64Image} alt={item.name} /></td>
+                  <td className='border border-gray-400 w-24 p-2'><Image src={item.base64Image} alt={item.name} /></td>
                   <td className='border border-gray-400'>{item.name}</td>
                   {item.totalprice ? (
                     <td className='border border-gray-400'>{item.totalprice}₺</td>
@@ -146,8 +147,8 @@ const page = () => {
           </div>
           <div className='absolute bottom-5 right-10'>
             <button className='border-2 text-white bg-265073 py-2 px-4 rounded-3xl w-52' onClick={() => {
-              const base64Image = cart[0].base64Image;
-              const name = cart[0].name;
+              const base64Image= cart[0].base64Image;
+              const name= cart[0].name;
               const price = cart[0].price;
               const quantity = cart[0].quantity;
              
@@ -164,4 +165,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page;
